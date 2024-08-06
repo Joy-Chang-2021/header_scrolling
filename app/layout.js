@@ -1,5 +1,6 @@
 import {fonts} from "./_components/font"
 import ChakraProvider from "./_components/chakra"
+import HeaderFooter from "./_components/header-footer"
 
 export const metadata = {
 	title: "Create Next App",
@@ -10,7 +11,9 @@ export default function RootLayout({children}) {
 	return (
 		<html lang="en" className={fonts.rubik.variable}>
 			<body>
-				<ChakraProvider>{children}</ChakraProvider>
+				<ChakraProvider>
+					<HeaderFooter>{children}</HeaderFooter>
+				</ChakraProvider>
 			</body>
 		</html>
 	)
