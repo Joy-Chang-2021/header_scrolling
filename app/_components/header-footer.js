@@ -10,7 +10,7 @@ export default function HeaderFooter({children}) {
 			justify="space-between"
 			bgColor="teal.50">
 			<Header />
-			<Flex as="main" mt="100px" p="10px" flex={1}>
+			<Flex as="main" mt="100px" p="10px" flex={1} direction="column">
 				{children}
 			</Flex>
 			<Footer />

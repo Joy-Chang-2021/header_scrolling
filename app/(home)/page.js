@@ -1,7 +1,6 @@
 "use client"
 import {useState, useEffect} from "react"
 import {Box, Text, useDisclosure} from "@chakra-ui/react"
-import {Link} from "@chakra-ui/next-js"
 
 export default function Page() {
 	const [lines, setLines] = useState([0])
@@ -14,12 +13,6 @@ export default function Page() {
 
 	return (
 		<Box>
-			<Text>
-				Home&nbsp;
-				<Link href="/about" color="blue.400" _hover={{color: "blue.700"}}>
-					&gt; Other
-				</Link>
-			</Text>
 			<Text
 				cursor="pointer"
 				color="cyan.500"
