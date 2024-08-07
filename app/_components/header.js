@@ -9,11 +9,21 @@ export default function Header() {
 	const lastScrollY = useRef(false)
 
 	const checkScrollDirection = useCallback(() => {
-		// 目前滾動的位置
+		// 目前滾動的位置、向上滾動的狀態
 		const newScrollY = window.scrollY || document.documentElement.scrollTop
+		const isScrollUp = newScrollY < lastScrollY.current
+		// 滾動內容總高度、目前滾動高度
+		const bodyHeight = document.body.scrollHeight
+		const viewHeight = window.innerHeight + newScrollY
+		// 上下範圍 (mobile 於至頂/至底滾動時的微小抖動範圍)
+		const nearTop = newScrollY < 50
+		const nearBottom = viewHeight + 50 > bodyHeight
 
-		if (newScrollY > 100 && newScrollY > lastScrollY.current) setIsShow.off()
-		else setIsShow.on()
+		if (isScrollUp) {
+			nearBottom ? setIsShow.off() : setIsShow.on()
+		} else {
+			nearTop ? setIsShow.on() : setIsShow.off()
+		}
 
 		lastScrollY.current = newScrollY
 	}, [setIsShow])
