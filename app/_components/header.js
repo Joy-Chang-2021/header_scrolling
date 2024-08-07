@@ -14,12 +14,15 @@ export default function Header() {
 		const isScrollUp = newScrollY < lastScrollY.current
 		// 滾動內容總高度、目前滾動高度
 		const bodyHeight = document.body.scrollHeight
-		const viewHeight = window.innerHeight + newScrollY
+		const scrollHeight = window.innerHeight + newScrollY
 		// 上下範圍 (mobile 於至頂/至底滾動時的微小抖動範圍)
 		const nearTop = newScrollY < 50
-		const nearBottom = viewHeight + 50 > bodyHeight
+		const nearBottom = scrollHeight + 50 > bodyHeight
+		const isContentFits = bodyHeight <= window.innerHeight + 100
 
-		if (isScrollUp) {
+		if (isContentFits) {
+			setIsShow.on()
+		} else if (isScrollUp) {
 			nearBottom ? setIsShow.off() : setIsShow.on()
 		} else {
 			nearTop ? setIsShow.on() : setIsShow.off()
